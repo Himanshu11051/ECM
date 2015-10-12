@@ -214,7 +214,7 @@
 
 
     /* Task Builder Starts Here */
-    var count = 0;
+    var count = 2;
     var idi;
 
     //Add text field
