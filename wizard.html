@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Easy Case Management</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+  <!-- bootstrap 3.0.2 -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Ionicons -->
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/jquery.steps.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+  <link href="css/materialize.css" rel="stylesheet" type="text/css" />
+  <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="css/switch.css" />
+  <link rel="stylesheet" href="css/tagmanager.css" />
+  <link href="css/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
+  <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+  <style>
+
+
+    input[type=text] {
+      height: 26px;
+      margin-bottom: 3px;
+    }
+
+    select {
+      margin-bottom: 5px;
+      font-size: 40px;
+    }
+
+    .required:after {
+      content: " *";
+      color: red
+    }
+
+
+    #content {
+      width: 100%;
+      height: 100%
+    }
+
+    #left {
+      width: 100%;
+      height: 445px;
+      float: left;
+      background-color: rgb(255, 255, 255);
+      display: block;
+      position: relative;
+      margin-top: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176);
+      max-height: 445px;
+      overflow-y: auto;
+    }
+
+    #left h4 {
+      border-bottom: 1px solid grey;
+      padding: 5px;
+      padding-left: 10px;
+      margin: 0;
+      font-size: 14px;
+      background: #3C8DBC;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176);
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    #right {
+      width: 100%;
+      height: 445px;
+      float: right;
+      background-color: rgb(255, 255, 255);
+      display: block;
+      position: relative;
+      margin-top: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176);
+      max-height: 445px;
+      overflow-y: auto;
+    }
+
+    #right h4 {
+      border-bottom: 1px solid grey;
+      padding: 5px;
+      padding-left: 10px;
+      margin: 0;
+      font-size: 14px;
+      background: #3C8DBC;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176);
+      color: white;
+    }
+  </style>
+
+<!--Java script files-->
+
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/tagmanager.js"></script>
+  <script src="js/jquery.steps.js"></script>
+  <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+</head>
+
+<body class="skin-blue">
+  <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <!-- Add the class icon to your logo image or logo icon to add the margining -->
+      Easy Case Management
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="navbar-right">
+        <form action="#" class="text-right col-md-3" style=" left: 58%; top: 9px;">
+          <div class="input-group">
+            <input type="text" class="form-control input-sm" id="nav-in-s" placeholder="Search" style="height: 29px;">
+            <div class="input-group-btn">
+              <button type="submit" name="s" id="nav-search" class="btn btn-sm btn-nav"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        </form>
+        <ul class="nav navbar-nav pull-right">
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell"></i>
+              <span class="label label-warning">1</span>
+            </a>
+            <ul class="dropdown-menu">
+
+            </ul>
+          </li>
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="glyphicon glyphicon-user"></i>
+              <span>Welcome User <i class="caret"></i></span>
+            </a>
+            <ul class="dropdown-menu">
+
+              <li class="user-footer">
+
+                <div class="pull-right">
+                  <a href="login.html">
+                    <button class="btn btn-danger">Log Out</button>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="pad margin no-print">
+  </div>
+  <section class="content">
+    <script>
+      $(function () {
+        $("#wizard").steps({
+          headerTag: "h2",
+          bodyTag: "section",
+          transitionEffect: "slideLeft"
+        });
+      });
+    </script>
+    <script>
+      $(function () {
+        $('[data-toggle="popover"]').popover()
+      })
+    </script>
+    <div id="wizard">
+      <h2>Overview</h2>
+      <section>
+        <div class="box box-primary wiz" style="margin-left: 31px;">
+          <div class="box-header">
+            <h3 class="box-title" style="margin-left:-7px">Case Overview</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <form role="form">
+              <!-- text input -->
+              <div class="form-group ">
+                <label class="required">Name</label>
+                <input type="text" class="form-control shadow" style="height: 35px;" placeholder="Enter Name" data-toggle="popover" title="Name" data-content="Enter your name here" data-trigger="focus" />
+              </div>
+
+              <!-- select -->
+              <div class="form-group">
+                <label class="required">Type</label>
+                <select class="form-control shadow" style="width:25% !important" placeholder="Select Type" data-toggle="popover" title="Type" data-content="Select from HR, Finance, Presales" data-trigger="focus">
+                  <option>HR</option>
+                  <option>Finance</option>
+                  <option>Presales</option>
+<!--
+                  <option>Option 4</option>
+                  <option>Option 5</option>
+-->
+                </select>
+              </div>
+              <!-- textarea -->
+              <div class="form-group">
+                <label class="required">Description</label>
+                <textarea class="form-control shadow" rows="3" placeholder="Enter Description"  data-toggle="popover" title="Description" data-content="Enter description here" data-trigger="focus"></textarea>
+              </div>
+
+
+            </form>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </section>
+
+      <h2>Data</h2>
+      <section class="col-md-12 col-sm-12">
+        <div class="col-md-2 col-sm-2">
+          <!--          <h3 class="htop" style="margin-top:5%">Tags</h3>-->
+
+          <div class="mCustomScrollbar" id='left'>
+            <h4 class="col-md-12 col-sm-12">Tags</h4>
+            <section id="tags">
+              <input type="text" name="tags" style="width:95% !important; font-size:13px; padding: 5px; margin-top: 4px; margin-left:4px;     height: 25px;" placeholder="Add New Tag" class="tm-input shadow" />
+
+              <!--              <input type="text" name="tags" placeholder="Tags" class="tm-input" />-->
+
+              <script>
+                jQuery(".tm-input").tagsManager();
+              </script>
+
+              <br>
+              <br>
+              <br>
+
+            </section>
+          </div>
+
+        </div>
+        <div class="col-md-7">
+          <div class="box box-primary shadow mtop">
+            <div class="box-header">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" id="data-inter" style="height:435px; overflow-y:auto">
+<!--
+              <div style="margin-left:40%; margin-top:20%">
+                <h3> Add Properties Here  </h3>
+            </div>
+-->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+          <div class="col-md-3 col-sm-3 pull-right mtop">
+            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+              <h4 class="col-md-12 col-sm-12">Data Properties</h4>
+              <section>
+
+                <!-- property and edit tabs -->
+                <div class=" ">
+                  <div class="row" style="margin-left: 45px;">
+                    <button class="btn btn-sm btn-primary" id="data-btn-property" style="margin-top:10px;margin-left:0px;height: 25px;">Properties</button>
+                    <button class="btn btn-sm btn-default" id="data-btn-edit" style="margin-top:10px;margin-left:0px;height: 25px; width: 35%;">Edit</button>
+                  </div>
+                </div>
+
+<!--                data properties div-->
+
+                <div class="properties-data">
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</button>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " id="data-noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Website</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <button class="btn btn-primary btn-flat btn-flat-new " id="smartobj" style="width:103%;    margin-left: -5px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Smart Object</button>
+
+                  </div>
+
+                </div>
+
+                <!-- Data-Edit task -->
+                <div class="edit-data hideDiv">
+                  <label style="margin-left: 8px;margin-top:8px;"> Enter Label</label>
+                  <input class="editlabtxt" id="data-et" type="text" />
+                  <label style="margin-left: 8px;margin-top:8px;"> Required</label>
+                  <input type="checkbox" id="data-check" />
+                  <label style="margin-left: 8px;margin-top:8px;"> Read Only</label>
+                  <input type="checkbox" />
+                </div>
+
+              </section>
+            </div>
+          </div>
+      </section>
+
+      <h2>Roles</h2>
+      <section class="col-md-12 col-sm-12">
+        <div class="col-md-2 col-sm-2">
+          <!--          <h3 class="htop" style="margin-top:5%">Tags</h3>-->
+
+          <div class="mCustomScrollbar" id='left'>
+            <h4 class="col-md-12 col-sm-12">Roles
+
+            </h4>
+            <section>
+              <input type="text" name="tags" style="width:95% !important; font-size:13px; padding: 5px; margin-top: 4px; margin-left:4px;     height: 25px;" placeholder="Add New Role" class="tm-input shadow" />
+
+              <script>
+                jQuery(".tm-input").tagsManager();
+              </script>
+            </section>
+          </div>
+
+        </div>
+        <div class="mtop">
+          <div class="col-md-10">
+            <div class="box box-solid shadow">
+              <div class="box-header">
+                <!--                <h3 class="box-title">Collapsible Accordion</h3>-->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="box-group" id="accordion">
+                  <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                  <div class="panel box box-primary">
+                    <div class="box-header">
+                      <!--<div class="pull-right box-tools">
+  <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseOne" data-toggle="collapse" title="Collapse" data-parent="#accordion" style="margin-right: 5px;"><i class="fa fa-angle-right "></i></button>
+</div>-->
+                      <h5 class="box-title" style="font-size: 14px; font-weight: 800">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                          Permissions
+                          <i class="glyphicon glyphicon-chevron-right" style="margin-left:800px"></i>
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse ">
+                      <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+
+                          <tr>
+                            <td>Re-Assign Tasks</td>
+
+                            <td>
+                              <div>
+                                <input type="checkbox" id="switch1" name="switch1" class="switch" />
+                                <label for="switch1"> &nbsp;</label>
+                              </div>
+                            </td>
+                            <td><a href="#"><span class="">Advanced</span></a></td>
+                          </tr>
+                          <tr>
+                            <td>Add Runtime Tasks</td>
+
+                            <td>
+                              <div>
+                                <input type="checkbox" id="switch2" name="switch2" class="switch" />
+                                <label for="switch2"> &nbsp;</label>
+                              </div>
+                            </td>
+                            <td><a href="#"><span class="">Advanced</span></a></td>
+                          </tr>
+                          <tr>
+                            <td>Update Case Files</td>
+
+                            <td>
+                              <div>
+                                <input type="checkbox" id="switch3" name="switch3" class="switch" />
+                                <label for="switch3"> &nbsp;</label>
+                              </div>
+
+                            </td>
+                            <td><a href="#"><span class="">Advanced</span></a></td>
+                          </tr>
+                          <tr>
+                            <td>Add Case Participants</td>
+                            <td>
+                              <div>
+                                <input type="checkbox" id="switch4" name="switch4" class="switch" />
+                                <label for="switch4"> &nbsp;</label>
+                              </div>
+                            </td>
+                            <td><a href="#"><span class="">Advanced</span></a></td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel box box-primary">
+                    <div class="box-header">
+                      <!--<div class="pull-right box-tools">
+  <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseTwo" data-toggle="collapse" title="Collapse" data-parent="#accordion" style="margin-right: 5px;" data-widget="collapse"><i class="fa  fa-angle-right "></i></button>
+</div>-->
+                      <h4 class="box-title" style="font-size: 14px; font-weight: 800">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                          Users
+                          <i class="glyphicon glyphicon-chevron-right" style="margin-left:840px"></i>
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                      <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                          <tr id="box_data1">
+                            <td>
+
+                              <div class="col-md-12 col-sm-12 align" id="append">
+                                <span class=" us col-md-12"> No users present for this role </span>
+                              </div>
+                              <!--
+                              <div class="col-md-12 col-sm-12 align">
+                                <span class="col-md-12">Preeti</span>
+                              </div>
+-->
+                            </td>
+                            <td>
+                              <button class="btn btn-sm btn-primary" style="float: right;" data-toggle='modal' data-target='#adduser'> Add Users</button>
+                              <br>
+                              <br>
+                            </td>
+                          </tr>
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- / Components -->
+      </section>
+
+
+
+      <h2>Tasks</h2>
+      <section class="col-md-12 col-sm-12">
+        <div class="col-md-2 col-sm-2">
+          <div class="mCustomScrollbar" id='left'>
+            <h4 class="col-md-12 col-sm-12 testParent">
+              Case Tasks
+              <a href="#" data-toggle="modal" data-target="#m1" >
+              <i class="pull-right fa fa-plus dropdown-toggle" style="color:white" > </i>
+              </a>
+
+
+            </h4>
+            <section>
+
+            </section>
+          </div>
+        </div>
+        <div class="mtop">
+          <div class="col-md-7">
+            <div class="box box-solid shadow">
+              <div class="box-header">
+                <!--                <h3 class="box-title">Collapsible Accordion</h3>-->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="box-group" id="accordion2">
+                  <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                  <div class="panel box box-primary">
+                    <div class="box-header" style="padding-bottom: 0px;">
+                      <!--<div class="pull-right box-tools">
+  <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseThree" data-toggle="collapse" title="Collapse" data-parent="#accordion2" style="margin-right: 5px;"><i class="fa fa-angle-right "></i></button>
+</div>-->
+                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree" id="field" class="acc" style="cursor:pointer">
+                        <h5 class="box-title" style="font-size: 14px; font-weight: 800; cursor:pointer; width:100%">
+
+                          Interface
+                          <i class="glyphicon glyphicon-chevron-right" style="left: 535px;" ></i>
+
+                      </h5>
+                      </a>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in  ">
+                      <div class="box-body" id="inter" style="height:310px; overflow-y:auto">
+<!--
+                        <div class="row taskframe" id="0"><label class="edit-label"> Name </label><input type="email" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled=""><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>
+
+                        <div class="row taskframe" id="1"><label class="edit-label"> Description </label><textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled=""></textarea><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>
+-->
+
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel box box-primary">
+                    <div class="box-header" style="padding-bottom: 0px;">
+                      <!--<div class="pull-right box-tools">
+  <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseFour" data-toggle="collapse" title="Collapse" data-parent="#accordion2" style="margin-right: 5px;" data-widget="collapse"><i class="fa  fa-angle-right "></i></button>
+</div>-->
+                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" id="attachment" class="acc">
+                        <h4 class="box-title" style="font-size: 14px; font-weight: 800; cursor:pointer; width:100%">
+
+                          Attached Items
+                          <i class="glyphicon glyphicon-chevron-right" style="left:499px;"></i>
+
+                      </h4>
+                      </a>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                      <div class="box-body" style="height:310px; overflow-y:auto">
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel box box-primary">
+                    <div class="box-header" style="padding-bottom: 0px;">
+                      <!--<div class="pull-right box-tools">
+  <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseFive" data-toggle="collapse" title="Collapse" data-parent="#accordion2" style="margin-right: 5px;" data-widget="collapse"><i class="fa  fa-angle-right "></i></button>
+</div>-->
+                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFive" id="overview" class="acc">
+                        <h4 class="box-title" style="font-size: 14px; font-weight: 800 ; cursor:pointer; width:100%">
+
+                         Outcome Properties
+                          <i class="glyphicon glyphicon-chevron-right" style="left:469px"></i>
+
+                      </h4>
+                      </a>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                      <div class="box-body"style="height:310px; overflow-y:auto">
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>
+
+        <!-- Field Div -->
+        <div class="about-field">
+          <div class="col-md-3 col-sm-3 pull-right">
+            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+              <h4 class="col-md-12 col-sm-12">Field Properties</h4>
+              <section>
+
+                <!-- text input -->
+                <div class=" ">
+                  <div class="row" style="margin-left: 45px;">
+                    <button class="btn btn-sm btn-primary" id="btn-property" style="margin-top:10px;margin-left:0px;height: 25px;">Properties</button>
+                    <button class="btn btn-sm btn-default" id="btn-edit" style="margin-top:10px;margin-left:0px;height: 25px; width: 35%;">Edit</button>
+                  </div>
+                </div>
+                <div class="properties-task">
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</button>
+                    </div>
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " id="noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Web</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</button>
+
+
+
+                      <button class="btn btn-primary btn-flat btn-flat-new" id="phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <button class="btn btn-primary btn-flat btn-flat-new " id="casedata" style="width:103%; margin-left: -5px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Case Data</button>
+
+                  </div>
+
+                </div>
+                <!-- Edit task -->
+                <div class="edit-task hideDiv">
+                  <label style="margin-left: 8px;margin-top:8px;"> Enter Label</label>
+                  <input class="editlabtxt" id="et" type="text" />
+                  <label style="margin-left: 8px;margin-top:8px;"> Required</label>
+                  <input type="checkbox" id="task-check" />
+                  <label style="margin-left: 8px;margin-top:8px;"> Read Only</label>
+                  <input type="checkbox" />
+                </div>
+
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attachment div -->
+        <div class="about-attachment hideDiv">
+          <div class="col-md-3 col-sm-3 pull-right">
+            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+              <h4 class="col-md-12 col-sm-12">Attachment Properties</h4>
+              <section>
+                <form role="form">
+                  <!-- text input -->
+                  <div class="form-group ">
+
+                    <div class="col-md-12" style="margin-top:10px">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-file" style="margin-right:8px; margin-left: -8px;"> </i>Document</button>
+
+                    </div>
+                    <div class="col-md-12">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-envelope" style="margin-right:8px; margin-left: -33px;"> </i>Email</button>
+                    </div>
+
+                    <div class="col-md-12">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -37px;"> </i>Link</button>
+
+                    </div>
+                    <div class="col-md-12">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-bookmark" style="margin-right:8px; margin-left: 1px;"> </i>Bookmark</button>
+                    </div>
+
+
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview div -->
+        <div class="about-overview hideDiv">
+          <div class="col-md-3 col-sm-3 pull-right">
+            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+              <h4 class="col-md-12 col-sm-12">Outcome Properties</h4>
+              <section>
+                <form role="form">
+                  <!-- text input -->
+                  <div class="form-group ">
+
+                    <div class="col-md-12" style="margin-top:10px">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -8px;"> </i>Link</button>
+
+                    </div>
+                    <div class="col-md-12">
+                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-check-square-o" style="margin-right:8px; margin-left: 4px;"> </i>Check List</button>
+                    </div>
+
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- / Components -->
+      </section>
+
+      <h2>Cards</h2>
+      <section class="col-md-12 col-sm-12">
+        <div class="col-md-2 col-sm-2">
+
+          <div class="mCustomScrollbar" id='left'>
+            <h4 class="col-md-12 col-sm-12">Card Library
+            </h4>
+            <div class="search-form col-md-12">
+              <form action="#" class="text-right">
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm col-md-12" placeholder="Search" style="width:100%">
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-sm btn-primary" style="padding: 3px;margin-right: 1px;"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <section>
+              <div class="col-md-12">
+                <!-- small box -->
+                <a href="#" class="cl" id="email">
+                  <div class="small-box-new bg-theme">
+                    <div class="inner">
+                      <h3>
+                     Email
+                    </h3>
+
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-email"></i>
+                    </div>
+                  </div>
+                </a>
+                <!-- small box -->
+                <a href="#" class="cl" id="sales">
+                  <div class="small-box-new bg-theme">
+                    <div class="inner">
+                      <h3>
+                     Sales<br> Force
+                    </h3>
+
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-ios7-people"></i>
+                    </div>
+                  </div>
+                </a>
+                <!-- small box -->
+                <a href="#" class="cl" id="rights">
+                  <div class="small-box-new bg-theme">
+                    <div class="inner">
+                      <h3>
+                      Rights
+                    </h3>
+
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-thumbsup"></i>
+                    </div>
+                  </div>
+                </a>
+                <!-- small box -->
+                <a href="#" class="cl" id="feeds">
+                  <div class="small-box-new bg-theme">
+                    <div class="inner">
+                      <h3>
+                      Feeds
+                    </h3>
+
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-card"></i>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+            </section>
+          </div>
+        </div>
+
+        <!--
+        <script type="text/javascript">
+          $('.pr').on("click", function (z) {
+            var $this = $(this),
+              $id = $this.attr('id'),
+              $class = '.' + $('.preview-' + $id).attr('class').replace('hideDiv', '');
+
+            $('#').addClass('hideDiv');
+            $('.preview-' + $id).removeClass('hideDiv');
+            $('div[class*=preview]').not($class).addClass('hideDiv');
+          });
+
+          //          $(".cross").click(function() {
+          //            $("#preview").addClass('hideDiv');
+          //          });
+
+          $(document).ready(function (c) {
+            $('.cross').on('click', function (c) {
+              $(this).parents().eq(2).addClass("hideDiv")
+            });
+          });
+        </script>
+-->
+
+        <div class="mtop">
+
+          <div class="card-default">
+            <div class="col-md-10">
+              <div class="box box-primary shadow">
+                <div class="box-header">
+                  <!--                <h3 class="box-title">Collapsible Accordion</h3>-->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="height:435px">
+                  <div style="margin-left:40%; margin-top:20%">
+                    <h3>Click on a Card to view it. </h3></div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+
+          <div class="card-email hideDiv">
+            <div class="col-md-10 ">
+              <div class="box box-primary shadow">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="height:435px; width:100%">
+                  <div class="col-md-5">
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Name of Card:</label>
+                      </div>
+                      <div class="col-md-6">Email </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Type of Card:</label>
+                      </div>
+                      <div class="col-md-6">Email Integration </div>
+                    </div>
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Description:</label>
+                      </div>
+                      <div class="col-md-7">This card is used to pull user email </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Email Client:</label>
+                      </div>
+                      <div class="col-md-7">Outlook </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Real Time Update on Card:</label>
+                      </div>
+                      <div class="col-md-7">
+
+                        <select class="form-control shadow" style="width:65%; height:30px !important">
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Card Interface:</label>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Inbox
+
+                        </div>
+
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Sent
+                        </div>
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Compose Email
+                        </div>
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Folders
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="checkbox">
+
+                        <input type="checkbox" /> Allow users to single Sign On
+                      </div>
+                      <div class="checkbox">
+
+                        <input type="checkbox" /> Allow users access to Email Client from Card
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="preview-email hideDiv" id="preview">
+                    <div class="col-md-7 shadow">
+                      <div class="col-md-5">
+
+                        <!-- Card Design -->
+                        <!--email card start here -->
+                        <div class="card-box bg-lightgray" style="top: 45px;">
+                          <span data-brackets-id="14140" class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left : 15px ; margin-top: 5px ">
+                               Email
+                              </h3>
+
+                            </div>
+                            <div data-brackets-id="11504" class="icon">
+                              <i data-brackets-id="11505" class="ion ion-email"></i>
+                            </div>
+                          </div>
+                          <div class="inner">
+                            <p>
+                              <ul data-brackets-id="15897" style="list-style-type:circle !important;     margin-left: 30px;">
+                                <li data-brackets-id="15898">1 RFP added</li>
+                                <li data-brackets-id="15899">1 Opportunity added</li>
+                              </ul>
+                            </p>
+                          </div>
+                        </div>
+                        <!--email card ends here -->
+                      </div>
+
+                      <div class="col-md-5" style="margin-left:70px">
+                        <!--                      <label> Company A</label>-->
+                        <button class="cross" style=" margin-left:200px; background:transparent; border:none"><i class="fa fa-times"></i></button>
+                        <div class="table-responsive no-padding">
+                          <table class="table table-hover">
+                            <th style="border-top:none"> Company A</th>
+                            <tr>
+                              <td>Account summary</td>
+                            </tr>
+                            <tr>
+                              <td>Recent opportunities</td>
+                            </tr>
+                            <tr>
+                              <td>Contact Details</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                              <td>Notes and Activities</td>
+                            </tr>
+                          </table>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 row">
+                    <br>
+
+                    <div class="col-md-2">
+                      <button class="btn btn-primary pr" id="email"> Preview Card</button>
+                    </div>
+                    <div class="col-md-2">
+                      <button class="btn btn-primary">Add to Case </button>
+                    </div>
+                    <div class="col-md-4"> </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+
+          <div class="card-sales hideDiv">
+            <div class="col-md-10 ">
+              <div class="box box-primary shadow">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="height:435px; width:100%">
+                  <div class="col-md-6">
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Name of Card:</label>
+                      </div>
+                      <div class="col-md-6">Sales Force </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Type of Card:</label>
+                      </div>
+                      <div class="col-md-6">CRM App </div>
+                    </div>
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Description:</label>
+                      </div>
+                      <div class="col-md-7">This card is used to pull lead information </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Make Card custom to:</label>
+                      </div>
+                      <div class="col-md-7">
+                        <select class="form-control shadow" style="width:65%; height:30px !important">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Real Time Update on Card:</label>
+                      </div>
+                      <div class="col-md-7">
+
+                        <select class="form-control shadow" style="width:65%; height:30px !important">
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="col-md-5">
+                        <label> Card Interface:</label>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Company Overview
+
+                        </div>
+
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Company Contact
+                        </div>
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Opportunity Pipeline
+                        </div>
+                        <div class="checkbox">
+
+                          <input type="checkbox" /> Previous Leads
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 row">
+                      <div class="checkbox">
+
+                        <input type="checkbox" /> Allow users to single Sign On
+                      </div>
+                      <div class="checkbox">
+
+                        <input type="checkbox" />Allow users access to Sales Force portal from Card
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="preview-sales hideDiv" id="preview2">
+                    <div class="col-md-6 shadow">
+                      <div class="col-md-5">
+                        <!--email card start here -->
+                        <div class="card-box bg-lightgray" style="top: 45px;">
+                          <span data-brackets-id="14140" class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left: 0px; margin-top: 5px;">
+                                Sales Force
+                              </h3>
+
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-ios7-people"></i>
+                            </div>
+                          </div>
+                          <div class="inner">
+                            <p>
+                              <ul data-brackets-id="15897" style="list-style-type:circle !important;     margin-left: 30px;">
+                                <li data-brackets-id="15898">1 RFP added</li>
+                                <li data-brackets-id="15899">1 Opportunity added</li>
+                              </ul>
+                            </p>
+                          </div>
+                        </div>
+                        <!--email card ends here -->
+                      </div>
+
+                      <div class="col-md-5" style="margin-left:70px">
+                        <!--                      <label> Company A</label>-->
+                        <button class="cross" style=" margin-left:155px; background:transparent; border:none"><i class="fa fa-times"></i></button>
+                        <div class="table-responsive no-padding">
+                          <table class="table table-hover">
+                            <th style="border-top:none"> Company A</th>
+                            <tr>
+                              <td>Account summary</td>
+                            </tr>
+                            <tr>
+                              <td>Recent opportunities</td>
+                            </tr>
+                            <tr>
+                              <td>Contact Details</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #ddd;">
+                              <td>Notes and Activities</td>
+                            </tr>
+                          </table>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 row">
+                    <br>
+                    <div class="col-md-2">
+                      <button class="btn btn-primary pr" id="sales"> Preview Card</button>
+                    </div>
+                    <div class="col-md-2">
+                      <button class="btn btn-primary">Add to Case </button>
+                    </div>
+                    <div class="col-md-4"> </div>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+
+          <div class="card-rights hideDiv">
+            <div class="col-md-10">
+              <div class="box box-primary shadow">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="height:435px">
+                  <div style="margin-left:40%; margin-top:20%">
+                    <h3>Rights Card Content </h3></div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+
+          <div class="card-feeds hideDiv">
+            <div class="col-md-10">
+              <div class="box box-primary shadow">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" style="height:435px">
+                  <div style="margin-left:40%; margin-top:20%">
+                    <h3>Feeds Card Content </h3></div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+
+        </div>
+        <!-- / Components -->
+      </section>
+
+      <h2> Closure Criteria</h2>
+      <section>
+        <div class="box box-primary wiz" style="margin-left: 31px; ">
+
+          <!-- /.box-header -->
+          <div class="box-body" id="closureBody" style=" max-height: 350px; overflow-y: auto;">
+            <div class="alert alert-info alert-dismissable" style="margin-top: 11px;">
+              <i class="fa fa-info"></i>
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <b>Closure Criteria!</b> Add closure criteria for the cases that must be accomplished before completion
+            </div>
+            <!--      <div class="table-responsive no-padding">
+              <table class="table table-hover">
+
+                <tr>
+                  <td style="width:1px">
+                    <label>If</label>
+                  </td>
+
+                  <td style="width:120px">
+                    <div>
+                      <select class="form-control shadow" style="width:110px !important" placeholder="Tag">
+                        <option class="hideDiv">Tag</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                        <option>Option 5</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td style="width:1px">
+                    <select class="form-control shadow" style="width:60px !important" placeholder="Tag">
+                      <option class="hideDiv">=</option>
+                      <option>Option 1</option>
+                      <option>Option 2</option>
+                      <option>Option 3</option>
+                      <option>Option 4</option>
+                      <option>Option 5</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select class="form-control shadow" style="width:110px !important" placeholder="Tag">
+                      <option class="hideDiv">Value</option>
+                      <option>Option 1</option>
+                      <option>Option 2</option>
+                      <option>Option 3</option>
+                      <option>Option 4</option>
+                      <option>Option 5</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </div> -->
+            <label> Pick elements to create closure criteria</label>
+            <div class="row closure shadow" id="closure1">
+              <div class="form-group" style="display:inline-flex">
+                <label style="margin-top: 6px;">If </label>
+                <select class="form-control shadow" style="width:110px !important; margin-left:10px">
+                  <option class="hideDiv">Tag</option>
+                  <option>Data</option>
+                  <option>Document</option>
+                  <option>Task</option>
+                </select>
+
+                <select class="form-control shadow" style="width:60px !important; margin-left:10px ">
+                  <option class="hideDiv">=</option>
+                  <option class="hideDiv">=</option>
+                  <option>+</option>
+                  <option>&amp;</option>
+<!--
+                  <option></option>
+                  <option>Option 4</option>
+                  <option>Option 5</option>
+-->
+                </select>
+                <div style="margin-left:10px">
+                  <select class="form-control shadow" style="width:110px !important">
+                    <option class="hideDiv">Value</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                    <option>Option 4</option>
+                    <option>Option 5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="pull-right btn-pannel">
+                <button class="btn-transparent"> <i class="fa fa-pencil"></i> </button>
+                <button class="btn-transparent"><i class="fa fa-save"></i> </button>
+                <button class="btn-transparent" id="del1"><i class="fa fa-trash-o"></i></button>
+              </div>
+            </div>
+
+
+            <!--
+            <form role="form">
+
+              <div class="form-group ">
+                <label class="required">Name</label>
+                <input type="text" class="form-control shadow" style="height: 35px;" placeholder="Enter Name" />
+              </div>
+
+
+              <div class="form-group">
+                <label class="required">Type</label>
+                <select class="form-control shadow" style="width:25% !important">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                  <option>Option 4</option>
+                  <option>Option 5</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="required">Description</label>
+                <textarea class="form-control shadow" rows="3" placeholder="Enter Description"></textarea>
+              </div>
+
+
+            </form>
+-->
+          </div>
+          <button class="btn btn-sm btn-primary" id="addClosure" style="margin-top:20px"> Add New</button>
+          <!-- /.box-body -->
+        </div>
+
+      </section>
+
+
+      <h2>Preview</h2>
+      <section class="col-md-12 col-sm-12">
+        <div class="col-md-2 col-sm-2 ">
+          <div id="left" style="height: auto;">
+            <h4 class="col-md-12 col-sm-12">View Tags
+<!--              <a href="#" data-toggle="modal" data-target="#m1" >-->
+                <i class="pull-right fa fa-angle-down " id="tagarrow" style="color:white; cursor:pointer" > </i>
+<!--              </a>-->
+            </h4>
+            <section>
+              <div class="tagview hideDiv">
+                Show Tags Here
+                <br> tag1
+                <br>tag2
+                <br>
+
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+        <div class="mtop">
+          <div class="col-md-8">
+            <div class="box box-primary shadow">
+              <div class="box-header">
+
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body" style="height:435px">
+
+                <section class="hierarchy_area clearfix">
+                  <div class="task_lists">
+                    <h4>Task Lists</h4>
+                  </div>
+                  <div class="line_area">
+                    <table width="78%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+                          <td height="20" style="border-right:2px solid #9dc8e2">&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td height="40" style="border:2px solid #9dc8e2; border-bottom:none">&nbsp;</td>
+                          <td height="40" style="border:2px solid #9dc8e2; border-bottom:none">&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="content_area">
+                    <ul class="clearfix">
+                      <li><a href="#">Approval</a>
+
+
+                      </li>
+                      <li><a href="#">Evaluation</a>
+                        <div class="hover_content">
+                          <ul>
+                            <li> Due Date: <strong>None</strong></li>
+                            <li> Assigned To: <strong>None</strong></li>
+                            <li> Pre-Condition: <strong>None</strong> </li>
+                            <li> Mandatory: <strong>Human</strong></li>
+                          </ul>
+                        </div>
+
+                        <div class="outer_overlay_area">
+                          <div class="overlay_area"></div>
+                          <div class="modal_content">
+                            <div class="modal_content_area">
+                              <a href="#"> <span class="fa fa-times "></span></a>
+                            </div>
+
+                            Some Content!</div>
+                        </div>
+                      </li>
+                      <li><a href="#">COE</a>
+                        <div class="hover_content">
+                          <ul>
+                            <li> Due Date: <strong>None</strong></li>
+                            <li> Assigned To: <strong>None</strong></li>
+                            <li> Pre-Condition: <strong>None</strong> </li>
+                            <li> Mandatory: <strong>Human</strong></li>
+                          </ul>
+                        </div>
+
+                        <div class="outer_overlay_area">
+                          <div class="overlay_area"></div>
+                          <div class="modal_content">
+                            <div class="modal_content_area">
+                              <a href="#"> <span class="fa fa-times "></span></a>
+                            </div>
+
+                            Some Content!</div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="line_area">
+                    <table width="78%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+                          <td height="20" style="border-right:2px solid #9dc8e2">&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td height="40" style="border:2px solid #9dc8e2; border-bottom:none">&nbsp;</td>
+                          <td height="40" style="border:2px solid #9dc8e2; border-bottom:none">&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="content_area content_area_blue">
+                    <ul class="clearfix">
+                      <li><a href="#">Demo</a></li>
+                      <li><a href="#">Scope Creation</a></li>
+                      <li><a href="#">Pricing</a>
+                        <div class="hover_content">
+                          <ul>
+                            <li> Tasks with Pre-Conditions </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+
+                  <div class="line_area">
+                    <table width="70%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+                          <td height="30" style="border-right:2px solid #9dc8e2">&nbsp;</td>
+                          <td>&nbsp;</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="content_area content_area_last">
+                    <ul class="clearfix">
+                      <li><a href="#">Review</a></li>
+
+
+                    </ul>
+                  </div>
+                </section>
+                <!-- /.box -->
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+        </div>
+        <div class="col-md-2 col-sm-2 ">
+          <div id="right" style="height: auto;">
+            <h4 class="col-md-12 col-sm-12">View Roles
+              <i class="pull-right fa fa-angle-down " id="rolesarrow" style="color:white; cursor:pointer" > </i>
+            </h4>
+            <section>
+              <div class="rolesview hideDiv">
+                Show Roles Here
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- Modal Structure -->
+    <div id="modal3" class="modal bottom-sheet">
+      <div class="modal-content">
+        <div class="modal-bottom-header" style="margin-bottom:-20px; border-bottom:0px; margin-top: -33px;">
+
+          <button type="button" id="cardholder" class="modal-action modal-close" style="margin-left:624px; height: 25px;color:#2184BE;width: 35px;border-radius: 10px; " data-dismiss="modal"><span class="glyphicon glyphicon-chevron-down"></span></button>
+          <!--          <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size:18px" >Cards Menu</h4> </b>-->
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="padding:2px">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+
+            <div class="carousel-inner" style="height:93px">
+              <div class="item active">
+                <div class="row" style="margin-left:50px">
+                  <div class="col-md-3 ">
+                    <!--email card start here -->
+                    <a href="#c1" data-toggle="modal" data-target="#c1" >
+                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px; position:absolute !important;color:black">
+                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                      <div class="card-box-new bg-theme">
+                        <div class="inner">
+                          <h3 style="margin-left : 15px ; margin-top: 5px ">
+                            Email
+                          </h3>
+
+                        </div>
+                        <div  class="icon">
+                          <i class="ion ion-email"></i>
+                        </div>
+                      </div>
+                      <div class="inner" style="margin-left: 100px;">
+                        <p>
+                          You have 3 new emails
+                        </p>
+                    </div>
+                  </div>
+                    </a>
+                  <!--email card ends here -->
+
+<!--
+                    <a href="#c1" data-toggle="modal" data-target="#c1" class=" pic">
+                      <img src="img/1.JPG" class="shadow ">
+                      <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
+                    </a>
+-->
+                  </div>
+
+                  <div class="col-md-3">
+                    <!--sales force card start here -->
+                    <a href="#c2" data-toggle="modal" data-target="#c2" >
+                      <div class="card-box bg-lightgray" style="top: 4px; height: 89px; position:absolute !important;color:black">
+                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                      <div class="card-box-new bg-theme">
+                        <div class="inner">
+                          <h3 style="margin-left : 1px ; margin-top: 5px ">
+                            Sales Force
+                          </h3>
+
+                        </div>
+                        <div  class="icon">
+                          <i class="ion ion-ios7-people"></i>
+                        </div>
+                      </div>
+                      <div class="inner" style="margin-left: 100px;">
+                        <p>
+                          Dummy Text
+                        </p>
+                      </div>
+                    </div>
+                    </a>
+                    <!--sales force card ends here -->
+<!--
+                    <a href="#c2" data-toggle="modal" data-target="#c2" class="pic">
+                      <img src="img/2.JPG" class="shadow">
+                      <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
+                    </a>
+-->
+                  </div>
+                  <div class="col-md-3">
+                    <a href="#c3" data-toggle="modal" data-target="#c3">
+                    <!--calendar card start here -->
+                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important;color:black">
+                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
+                      <div class="card-box-new bg-theme">
+                        <div class="inner">
+                          <h3 style="margin-left : 8px ; margin-top: 5px ">
+                            Calendar
+                          </h3>
+
+                        </div>
+                        <div  class="icon" style=" margin-left: 4px; margin-top:-4px">
+                          <i class="ion ion-ios7-calendar" style="font-size:60px"></i>
+                        </div>
+                      </div>
+                      <div class="inner" style="margin-left: 100px;">
+                        <p>
+                         You have 3 new invites
+                        </p>
+                      </div>
+                    </div>
+                    </a>
+                    <!--calendar card ends here -->
+<!--
+                    <a href="#c3" data-toggle="modal" data-target="#c3" class="pic">
+                      <img src="img/3.JPG" class="shadow">
+                      <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">3</span>
+                    </a>
+-->
+                  </div>
+                  <div class="col-md-3">
+                    <!--feeds card start here -->
+                    <a href="#c4" data-toggle="modal" data-target="#c4">
+                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important; color:black">
+                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
+                      <div class="card-box-new bg-theme">
+                        <div class="inner">
+                          <h3 style="margin-left : 15px ; margin-top: 5px ">
+                            Feeds
+                          </h3>
+
+                        </div>
+                        <div  class="icon" style="margin-left: 6px;margin-top:-6px">
+                          <i class="ion ion-social-rss" style="font-size:50px;" ></i>
+                        </div>
+                      </div>
+                      <div class="inner" style="margin-left: 100px;">
+                        <p>
+                          Dummy Text
+                        </p>
+                      </div>
+                    </div>
+                    </a>
+                    <!--Feeds card ends here -->
+<!--
+                    <a href="#c4" data-toggle="modal" data-target="#c4" class="pic">
+                      <img src="img/4.JPG" class="shadow">
+                      <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
+                    </a>
+-->
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="row" style="margin-left:50px">
+                  <div class="col-md-3">
+                    <img src="img/card.jpg" class="pic">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                </div>
+
+              </div>
+              <div class="item">
+                <div class="row" style="margin-left:50px">
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="shadow">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                  <div class="col-md-3">
+                    <img src="img/card.JPG" class="pic">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="left: -50px; width:5%">
+              <span class="glyphicon glyphicon-chevron-left" style="color:#367FA9; top: 42%"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="right: -50px; width:5%">
+              <span class="glyphicon glyphicon-chevron-right" style="color:#367FA9; top: 42%"></span>
+            </a>
+          </div>
+          <!-- /.row -->
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal Structure -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <div class="modal-bottom-header">
+
+          <button type="button" class="modal-action modal-close" data-dismiss="modal"><span class="fa fa-times "></span></button>
+          <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size: 18px !important" >Cards Menu</h4> </b>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="padding:2px">
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#m2" class="small-card-footer" data-toggle="modal" data-target="#m2">
+                <div class="small-card bg-aqua">
+                  <div class="inner">
+                    <h4>
+                    Context Exchange
+                  </h4>
+                    <p>
+                      Some Info
+                    </p>
+                  </div>
+                  <!--                    <div class="icon">
+<i class="ion ion-ios7-people"></i>
+</div>-->
+                  <a href="#" class="small-card-footer">
+                  Select <i class="fa fa-arrow-circle-right"></i>
+                </a>
+                </div>
+            </div>
+            <!-- ./col -->
+
+            <!-- ./col -->
+
+            <!-- ./col -->
+
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-center">
+      <!--                <button class="btn btn-primary" id="showBottom" onclick="showme();">Cards</button>-->
+      <a class="btn btn-primary modal-trigger btn-primary-header " href="#modal3" style="padding-bottom:1.5%; position:fixed ; padding-top: 1.5%; margin-top:-10px; bottom:0">Cards <i class="fa fa-chevron-up screen-top" style="display: block;margin-right: -23px;"> <span class="label label-warning" style="top:-12px;right:-8px;border-radius:10px;padding-top:4px">1</span></i> </a>
+    </div>
+
+
+
+  </section>
+  <!--
+  <script>
+    $(function () {
+      fb = new Formbuilder({
+        selector: '.fb-main',
+
+      });
+
+    });
+  </script>
+-->
+  <!--  <script type="text/javascript">
+    $(window).load(function () {
+
+      $(".rotate").click(function () {
+        $(this).toggleClass("up");
+      })
+    });
+  </script>-->
+
+  <!-- Cards Modal -->
+  <!-- Email Card Modal -->
+  <div id="c1" class="modal cards c1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 270px; height:200px">
+        <div class="modal-header" style="width:100%;padding-left:0px;margin-left:0px; margin-top: -46px;">
+          <button type="button" class="close" data-dismiss="modal" style=" margin-right: -35px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <b> <h3 class="modal-title col-sm-6" style="font-size: 17px;">Email</h3> </b>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="height:280px">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              Some Info
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- dialog buttons -->
+        <!--        <div class="modal-footer" style="padding:0px">
+<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+</div>-->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Sales Modal -->
+  <div id="c2" class="modal cards c2">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 270px; height:200px">
+        <div class="modal-header" style="width:100%;padding-left:0px;margin-left:0px; margin-top: -46px;">
+
+          <button type="button" class="close" data-dismiss="modal" style=" margin-right: -35px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <b> <h3 class="modal-title col-sm-6" style="font-size: 17px;"> Sales </h3> </b>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="height:280px">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              Some Info
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- dialog buttons -->
+        <!--        <div class="modal-footer" style="padding:0px">
+<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+</div>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar Modal -->
+
+  <div id="c3" class="modal cards c3">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 270px; height:200px">
+        <div class="modal-header" style="width:100%;padding-left:0px;margin-left:0px; margin-top: -46px;">
+
+          <button type="button" class="close" data-dismiss="modal" style=" margin-right: -35px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <b> <h3 class="modal-title col-sm-6" style="font-size: 17px;">Calendar</h3> </b>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="height:280px">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <i class="ion-ios7-calendar-outline" style="font-size: 100px;margin-left: 45px;"></i>
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- dialog buttons -->
+        <!--        <div class="modal-footer" style="padding:0px">
+<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+</div>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Feeds modal -->
+
+  <div id="c4" class="modal cards c4">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 270px; height:200px">
+        <div class="modal-header" style="width:100%;padding-left:0px;margin-left:0px; margin-top: -46px;">
+
+          <button type="button" class="close" data-dismiss="modal" style=" margin-right: -35px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <b> <h3 class="modal-title col-sm-6" style="font-size: 17px;">Feeds</h3> </b>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body" style="height:280px">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              Some Info
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- dialog buttons -->
+        <!--        <div class="modal-footer" style="padding:0px">
+<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+</div>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards Modal Ends -->
+
+
+  <!-- Modal starts from here -->
+  <div id="m1" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <b> <h3 class="modal-title col-sm-6" style="margin-left: -28px;"> Task Library</h3> </b>
+          <div class="search-form col-sm-5">
+            <form action="#" class="text-right">
+              <div class="input-group">
+                <input type="text" class="form-control input-sm" placeholder="Search" style="height:30px">
+                <div class="input-group-btn">
+                  <button type="submit" name="q" class="btn btn-sm btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- dialog body -->
+        <div class="modal-body">
+          <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        Initiation
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-ios7-people"></i>
+                  </div>
+                  <!--                <a href="#m2" class="small-box-footer">-->
+                  <br>
+
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        Review
+                        <br><br>
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-paper-airplane"></i>
+                  </div>
+                  <!--<a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i>-->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        Approval
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-medkit"></i>
+                  </div>
+                  <!--                <a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i> -->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        ABC
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-ios7-cart"></i>
+                  </div>
+                  <!--                <a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i> -->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        ABC
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-ios7-close"></i>
+                  </div>
+                  <!--
+<a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i>
+-->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        ABC
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-hammer"></i>
+                  </div>
+                  <!--<a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i>-->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-theme">
+                  <div class="inner">
+                    <h4>
+                        ABC
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-checkmark"></i>
+                  </div>
+                  <!--
+<a href="#" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i>
+-->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <a href="#">
+                <div class="small-box bg-darkgray">
+                  <div class="inner">
+                    <h4>
+                        New
+                      </h4>
+                    <p>
+
+                    </p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-plus-circled"></i>
+                  </div>
+                  <!--
+<a href="wizard.html" class="small-box-footer">
+Select <i class="fa fa-arrow-circle-right"></i>
+-->
+                  <br>
+                </div>
+              </a>
+            </div>
+            <!-- ./col -->
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- dialog buttons -->
+        <!--
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+        </div>
+-->
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="adduser" role="dialog" aria-labelledby="smallModal" aria-hidden="true" style=" top: 10%;left: 45%;">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width:300px">
+        <div class="modal-header" style="height:10px; margin-left: -20px;  margin-top: -46px;">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel" style="font-weight:bold">Users List</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                User 1
+              </td>
+              <td>
+                <input type="checkbox" name="test1" value="" class="cb" style="float:right;    margin-left: 144px;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                User 2
+              </td>
+              <td>
+                <input type="checkbox" name="test2" value="" class="cb" style="float:right;    margin-left: 144px;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                User 3
+              </td>
+              <td>
+                <input type="checkbox" name="test3" value="" class="cb" style="float:right;    margin-left: 144px;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                User 4
+              </td>
+              <td>
+                <input type="checkbox" name="test4" value="" class="cb" style="float:right;    margin-left: 144px;">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                User 5
+              </td>
+              <td>
+                <input type="checkbox" name="test5" value="" class="cb" style="float:right;    margin-left: 144px;">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer" style="padding-top:0px; height:0px">
+          <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" onClick="addElement1();">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript" src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+<script src="js/materialize.js"></script>
+<script src="js/style.js"></script>
+
+</html>
