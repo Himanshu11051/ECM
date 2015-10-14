@@ -1754,7 +1754,6 @@ Component: Small boxes
   color: rgba(0, 0, 0, 0.15);
 }
 
-
 .small-box-new:hover {
   text-decoration: none;
   color: #f9f9f9;
@@ -1777,6 +1776,7 @@ Component: Small boxes
   -moz-animation-timing-function: ease;
   -moz-animation-fill-mode: forwards;
 }
+
 
 /*small card box new */
 
@@ -1872,6 +1872,7 @@ Component: Small boxes
   -moz-animation-fill-mode: forwards;
 }
 
+
 /*CardBox*/
 
 .card-box {
@@ -1945,7 +1946,7 @@ Component: Small boxes
 
 .card-box:hover {
   text-decoration: none;
-opacity: 0.9;
+  opacity: 0.9;
 }
 
 .card-box:hover .icon {
@@ -1995,7 +1996,6 @@ opacity: 0.9;
     font-size: 12px;
   }
 }
-
 
 
 /*
@@ -2684,7 +2684,7 @@ Component: timeline
 .btn.btn-nav {
   background-color: #777777;
   border-color: #777777;
-  color:#fff;
+  color: #fff;
 }
 
 .btn.btn-nav:hover,
@@ -4846,7 +4846,7 @@ fieldset[disabled] .btn-vk.active {
   margin-left: 2px;
   padding-top: 15px;
   padding-left: 5px;
-/*  border: 1px solid;*/
+  /*  border: 1px solid;*/
   width: 100%;
   margin-bottom: 10px
 }
@@ -4855,31 +4855,29 @@ fieldset[disabled] .btn-vk.active {
   background: #f5f5f5;
 }
 
-.btn-pannel{
-  margin-right:10px;
+.btn-pannel {
+  margin-right: 10px;
   display: none;
 }
 
-.closure:hover .btn-pannel{
- display: block;
+.closure:hover .btn-pannel {
+  display: block;
 }
 
-.btn-transparent{
-
- background: transparent;
+.btn-transparent {
+  background: transparent;
   border: none;
 }
 
-.btn-transparent:hover{
-
- background: transparent;
+.btn-transparent:hover {
+  background: transparent;
   border: 1px solid rgba(167, 167, 167, 0.65);
 }
 
 .taskframe {
   margin-left: 2px;
   padding-left: 5px;
-/*  border: 1px solid;*/
+  /*  border: 1px solid;*/
   width: 100%;
   margin-bottom: 10px
 }
@@ -4889,35 +4887,39 @@ fieldset[disabled] .btn-vk.active {
   border: 1px dotted #333;
 }
 
-.taskframe:hover .btn-pannel{
- display: block;
-}
-.formctrl{
-  margin-bottom: 2px;
-  width:45% !important;
+.taskframe:hover .btn-pannel {
+  display: block;
 }
 
-.editlabtxt{
+.formctrl {
+  margin-bottom: 2px;
+  width: 45% !important;
+  height: 100% !important;
+}
+
+.editlabtxt {
   margin-top: 10px !important;
   width: 90% !important;
   margin-left: 8px !important;
 }
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
   cursor: pointer !important;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176);
 }
 
-.edit-label{
+.edit-label {
   font-weight: 600;
   font-size: 13px;
 }
 
-
 .dataframe {
   margin-left: 2px;
   padding-left: 5px;
-/*  border: 1px solid;*/
+  /*  border: 1px solid;*/
   width: 100%;
   margin-bottom: 10px
 }
@@ -4927,22 +4929,29 @@ fieldset[disabled] .btn-vk.active {
   border: 1px dotted #333;
 }
 
-.dataframe:hover .btn-pannel{
- display: block;
+.dataframe:hover .btn-pannel {
+  display: block;
 }
 
 .btn-block {
-    display: block;
-    width: 40%;
-    padding-right: 0;
-    padding-left: 0;
+  display: block;
+  width: 40%;
+  padding-right: 0;
+  padding-left: 0;
   text-align: start !important;
-      border-color: #C3C3C3 !important ;
-    border-bottom-color: #C3C3C3 !important;
+  border-color: #C3C3C3 !important;
+  border-bottom-color: #C3C3C3 !important;
 }
 
-.edit-data-label{
+.edit-data-label {
   font-weight: 400;
   font-size: 13px;
   padding-left: 10px;
+}
+
+.edit-data label,
+.edit-task label {
+  float: left;
+  width: 40%;
+  margin-left: 5%;
 }

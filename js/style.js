@@ -26,12 +26,12 @@
       $(".alert").delay(10000).fadeOut('slow');
     });
 
-//    $('#nav-search').click(function(){
-//
-//      $('#nav-in-s').slideToggle("slow");
-//
-//
-//    });
+    //    $('#nav-search').click(function(){
+    //
+    //      $('#nav-in-s').slideToggle("slow");
+    //
+    //
+    //    });
 
     // add user checkbox
 
@@ -60,90 +60,297 @@
 
     /* ----------------------------------------------------------------------------------------- */
 
-      /* Data Builder Starts Here */
+    /* Data Builder Starts Here */
     var data_count = 1;
     var data_idi;
 
-    //Add text field
+    /*code for draggable objects */
 
-    $(document.body).on('click', '#data-txt', function () {
-
-      var dtxtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dtxtinput);
-      data_count = data_count + 1;
+    //Drag text
+    $("#data-txt").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add paragraph
-    $(document.body).on('click', '#data-para', function () {
-
-      var ddropinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(ddropinput);
-      data_count = data_count + 1;
+    //Drag paragraph
+    $("#data-para").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add number
-    $(document.body).on('click', '#data-noinput', function () {
-
-      var dnuminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dnuminput);
-      data_count = data_count + 1;
+    // Drag number
+    $("#data-noinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add web
-    $(document.body).on('click', '#data-webinput', function () {
-
-      var dwinput =  '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dwinput);
-      data_count = data_count + 1;
+    //Drag website
+    $("#data-webinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add time
-    $(document.body).on('click', '#data-timeinput', function () {
-
-      var dtimeinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dtimeinput);
-      data_count = data_count + 1;
+    // Drag time
+    $("#data-timeinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add date
-    $(document.body).on('click', '#data-dateinput', function () {
-
-      var ddtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(ddtinput);
-      data_count = data_count + 1;
+    // Drag date
+    $("#data-dateinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add email
-    $(document.body).on('click', '#data-emailinput', function () {
-
-      var deminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(deminput);
-      data_count = data_count + 1;
+    // Drag email
+    $("#data-emailinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add price
-    $(document.body).on('click', '#data-priceinput', function () {
-
-      var dprinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dprinput);
-      data_count = data_count + 1;
+    // Drag Price
+    $("#data-priceinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add address
-    $(document.body).on('click', '#data-addinput', function () {
-
-      var dadinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dadinput);
-      data_count = data_count + 1;
+    // Drag address
+    $("#data-addinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
 
-    //Add phone
-    $(document.body).on('click', '#data-phoneinput', function () {
-
-      var dphinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#data-inter").append(dphinput);
-      data_count = data_count + 1;
+    // Drag phone
+    $("#data-phoneinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "data-inter"
     });
+
+    /* code for area where draggable objects will be dropped */
+
+    $("#data-inter").droppable({
+      // accept:"#draggable1, #draggable2",
+      activeClass: "ui-state-highlight",
+      hoverClass: "drop-hover",
+      drop: function (event, ui) {
+        var id = ui.draggable.attr("id");
+
+        //Add text
+        var dtxtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add paragraph
+        var ddropinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add Number
+        var dnuminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add web
+        var dwinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add time
+        var dtimeinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add date
+        var ddtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add email
+        var deminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add price
+        var dprinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add address
+        var dadinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add phone.
+        var dphinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        var d_task = new function () {
+          $('.edit-data').show();
+          $('.properties-data').hide();
+
+          $('#data-btn-property').removeClass('btn-primary');
+          $('#data-btn-edit').removeClass('btn-default');
+          $('#data-btn-edit').addClass('btn-primary');
+
+
+        }
+
+        if (id == "data-txt") {
+
+          $(this).append(dtxtinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-para") {
+
+          $(this).append(ddropinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-noinput") {
+
+          $(this).append(dnuminput);
+          data_count = data_count + 1;
+        }
+
+
+        if (id == "data-webinput") {
+
+          $(this).append(dwinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-timeinput") {
+
+          $(this).append(dtimeinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-dateinput") {
+
+          $(this).append(ddtinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-emailinput") {
+
+          $(this).append(deminput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-priceinput") {
+
+          $(this).append(dprinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-addinput") {
+
+          $(this).append(dadinput);
+          data_count = data_count + 1;
+        }
+
+        if (id == "data-phoneinput") {
+
+          $(this).append(dphinput);
+          data_count = data_count + 1;
+        }
+
+      }
+    });
+
+    $('#data-inter').sortable();
+
+    /*  $(document.body).on('click', '#data-txt', function () {
+
+        var dtxtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dtxtinput);
+        data_count = data_count + 1;
+      });
+
+      //Add paragraph
+      $(document.body).on('click', '#data-para', function () {
+
+        var ddropinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(ddropinput);
+        data_count = data_count + 1;
+      });
+
+      //Add number
+      $(document.body).on('click', '#data-noinput', function () {
+
+        var dnuminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dnuminput);
+        data_count = data_count + 1;
+      });
+
+      //Add web
+      $(document.body).on('click', '#data-webinput', function () {
+
+        var dwinput =  '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dwinput);
+        data_count = data_count + 1;
+      });
+
+      //Add time
+      $(document.body).on('click', '#data-timeinput', function () {
+
+        var dtimeinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dtimeinput);
+        data_count = data_count + 1;
+      });
+
+      //Add date
+      $(document.body).on('click', '#data-dateinput', function () {
+
+        var ddtinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(ddtinput);
+        data_count = data_count + 1;
+      });
+
+      //Add email
+      $(document.body).on('click', '#data-emailinput', function () {
+
+        var deminput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(deminput);
+        data_count = data_count + 1;
+      });
+
+      //Add price
+      $(document.body).on('click', '#data-priceinput', function () {
+
+        var dprinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dprinput);
+        data_count = data_count + 1;
+      });
+
+      //Add address
+      $(document.body).on('click', '#data-addinput', function () {
+
+        var dadinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dadinput);
+        data_count = data_count + 1;
+      });
+
+      //Add phone
+      $(document.body).on('click', '#data-phoneinput', function () {
+
+        var dphinput = '<div class="row dataframe" id="' + data_count + '"><button class="btn btn-default btn-block shadow"><span class="edit-data-label"  > Enter Label </span></button><div class="pull-right btn-pannel"><button class="btn-transparent" id="delD"><i class="fa fa-trash-o"></i></button></div></div>';
+        $("#data-inter").append(dphinput);
+        data_count = data_count + 1;
+      });
+      */
 
     //Delete task input
 
@@ -217,86 +424,295 @@
     var count = 2;
     var idi;
 
-    //Add text field
-    $(document.body).on('click', '#txt', function () {
+    /*code for draggable objects */
 
-      var txtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="email" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(txtinput);
-      count = count + 1;
+    //Drag text
+    $("#txt").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add paragraph
-    $(document.body).on('click', '#para', function () {
-
-      var dropinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled /><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(dropinput);
-      count = count + 1;
+    //Drag paragraph
+    $("#para").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add number
-    $(document.body).on('click', '#noinput', function () {
-
-      var numinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="number" class="form-control formctrl" placeholder="Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(numinput);
-      count = count + 1;
+    // Drag number
+    $("#noinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add web
-    $(document.body).on('click', '#webinput', function () {
-
-      var winput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Web" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(winput);
-      count = count + 1;
+    //Drag website
+    $("#webinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add time
-    $(document.body).on('click', '#timeinput', function () {
-
-      var tinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Time" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(tinput);
-      count = count + 1;
+    // Drag time
+    $("#timeinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add date
-    $(document.body).on('click', '#dateinput', function () {
-
-      var dtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Date" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(dtinput);
-      count = count + 1;
+    // Drag date
+    $("#dateinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add email
-    $(document.body).on('click', '#emailinput', function () {
-
-      var eminput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="email" class="form-control formctrl" placeholder="Email" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(eminput);
-      count = count + 1;
+    // Drag email
+    $("#emailinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add price
-    $(document.body).on('click', '#priceinput', function () {
-
-      var prinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Price" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(prinput);
-      count = count + 1;
+    // Drag Price
+    $("#priceinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add address
-    $(document.body).on('click', '#addinput', function () {
-
-      var adinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Address" disabled><input type="text" class="form-control formctrl" placeholder="State" disabled><input type="text" class="form-control formctrl" placeholder="City" disabled><input type="text" class="form-control formctrl" placeholder="Zipcode" disabled><input type="text" class="form-control formctrl" placeholder="Country" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(adinput);
-      count = count + 1;
+    // Drag address
+    $("#addinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
-    //Add price
-    $(document.body).on('click', '#phoneinput', function () {
-
-      var phinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Phone Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
-      $("#inter").append(phinput);
-      count = count + 1;
+    // Drag phone
+    $("#phoneinput").draggable({
+      revert: true, // bounce back when dropped
+      helper: "clone", // create "copy" with original properties, but not a true clone
+      cursor: "move",
+      revertDuration: 500,
+      connectToSortable: "inter"
     });
 
+    /* code for area where draggable objects will be dropped */
+
+    $("#inter").droppable({
+      // accept:"#draggable1, #draggable2",
+      activeClass: "ui-state-highlight",
+      hoverClass: "drop-hover",
+      drop: function (event, ui) {
+        var id = ui.draggable.attr("id");
+
+        //Add text
+        var txtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add paragraph
+        var dropinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled /><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add Number
+        var numinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="number" class="form-control formctrl" placeholder="Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add web
+        var winput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Web" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add time
+        var tinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Time" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add date
+        var dtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Date" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add email
+        var eminput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="email" class="form-control formctrl" placeholder="Email" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add price
+        var prinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Price" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add address
+        var adinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Address" disabled><input type="text" class="form-control formctrl" placeholder="State" disabled><input type="text" class="form-control formctrl" placeholder="City" disabled><input type="text" class="form-control formctrl" placeholder="Zipcode" disabled><input type="text" class="form-control formctrl" placeholder="Country" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        //Add phone.
+        var phinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Phone Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+
+        var e_task = new function () {
+          $('.edit-task').show();
+          $('.properties-task').hide();
+          $('#btn-property').removeClass('btn-primary');
+          $('#btn-edit').removeClass('btn-default');
+          $('#btn-edit').addClass('btn-primary');
+
+        }
+
+        if (id == "txt") {
+
+          $(this).append(txtinput);
+          count = count + 1;
+
+        }
+
+        if (id == "para") {
+
+          $(this).append(dropinput);
+          count = count + 1;
+        }
+
+        if (id == "noinput") {
+
+          $(this).append(numinput);
+          count = count + 1;
+        }
+
+
+        if (id == "webinput") {
+
+          $(this).append(winput);
+          count = count + 1;
+        }
+
+        if (id == "timeinput") {
+
+          $(this).append(tinput);
+          count = count + 1;
+        }
+
+        if (id == "dateinput") {
+
+          $(this).append(dtinput);
+          count = count + 1;
+        }
+
+        if (id == "emailinput") {
+
+          $(this).append(eminput);
+          count = count + 1;
+        }
+
+        if (id == "priceinput") {
+
+          $(this).append(prinput);
+          count = count + 1;
+        }
+
+        if (id == "addinput") {
+
+          $(this).append(adinput);
+          count = count + 1;
+        }
+
+        if (id == "phoneinput") {
+
+          $(this).append(phinput);
+          count = count + 1;
+        }
+
+      }
+    });
+
+    $('#inter').sortable();
+
+
+    /*
+        //Add text field
+        $(document.body).on('click', '#txt', function () {
+
+          var txtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="email" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(txtinput);
+          count = count + 1;
+        });
+
+        //Add paragraph
+        $(document.body).on('click', '#para', function () {
+
+          var dropinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled /><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(dropinput);
+          count = count + 1;
+        });
+
+        //Add number
+        $(document.body).on('click', '#noinput', function () {
+
+          var numinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="number" class="form-control formctrl" placeholder="Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(numinput);
+          count = count + 1;
+        });
+
+        //Add web
+        $(document.body).on('click', '#webinput', function () {
+
+          var winput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Web" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(winput);
+          count = count + 1;
+        });
+
+        //Add time
+        $(document.body).on('click', '#timeinput', function () {
+
+          var tinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Time" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(tinput);
+          count = count + 1;
+        });
+
+        //Add date
+        $(document.body).on('click', '#dateinput', function () {
+
+          var dtinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Date" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(dtinput);
+          count = count + 1;
+        });
+
+        //Add email
+        $(document.body).on('click', '#emailinput', function () {
+
+          var eminput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="email" class="form-control formctrl" placeholder="Email" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(eminput);
+          count = count + 1;
+        });
+
+        //Add price
+        $(document.body).on('click', '#priceinput', function () {
+
+          var prinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Price" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(prinput);
+          count = count + 1;
+        });
+
+        //Add address
+        $(document.body).on('click', '#addinput', function () {
+
+          var adinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Address" disabled><input type="text" class="form-control formctrl" placeholder="State" disabled><input type="text" class="form-control formctrl" placeholder="City" disabled><input type="text" class="form-control formctrl" placeholder="Zipcode" disabled><input type="text" class="form-control formctrl" placeholder="Country" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(adinput);
+          count = count + 1;
+        });
+
+        //Add price
+        $(document.body).on('click', '#phoneinput', function () {
+
+          var phinput = '<div class="row taskframe" id="' + count + '"><label class="edit-label"  > Enter Label </label><input type="text" class="form-control formctrl" placeholder="Phone Number" disabled><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>';
+          $("#inter").append(phinput);
+          count = count + 1;
+        });
+    */
     //Delete task input
 
     $(document.body).on('click', '#delT', function () {
@@ -308,6 +724,7 @@
 
     //Edit and Properties Panel
     $('#btn-edit').on('click', function () {
+      //alert('hi');
       $('.edit-task').show();
       $('#btn-property').removeClass('btn-primary');
       $('#btn-edit').removeClass('btn-default');

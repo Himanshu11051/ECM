@@ -23,29 +23,26 @@
   <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
   <style>
-
-
     input[type=text] {
       height: 26px;
       margin-bottom: 3px;
     }
-
+    
     select {
       margin-bottom: 5px;
       font-size: 40px;
     }
-
+    
     .required:after {
       content: " *";
       color: red
     }
-
-
+    
     #content {
       width: 100%;
       height: 100%
     }
-
+    
     #left {
       width: 100%;
       height: 445px;
@@ -58,7 +55,7 @@
       max-height: 445px;
       overflow-y: auto;
     }
-
+    
     #left h4 {
       border-bottom: 1px solid grey;
       padding: 5px;
@@ -70,7 +67,7 @@
       color: white;
       margin-bottom: 4px;
     }
-
+    
     #right {
       width: 100%;
       height: 445px;
@@ -83,7 +80,7 @@
       max-height: 445px;
       overflow-y: auto;
     }
-
+    
     #right h4 {
       border-bottom: 1px solid grey;
       padding: 5px;
@@ -96,9 +93,10 @@
     }
   </style>
 
-<!--Java script files-->
+  <!--Java script files-->
 
   <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
   <script src="js/tagmanager.js"></script>
   <script src="js/jquery.steps.js"></script>
   <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -189,17 +187,17 @@
               <!-- text input -->
               <div class="form-group ">
                 <label class="required">Name</label>
-                <input type="text" class="form-control shadow" style="height: 35px;" placeholder="Enter Name" data-toggle="popover" title="Name" data-content="Enter your name here" data-trigger="focus" />
+                <input type="text" class="form-control shadow" style="height: 35px;" placeholder="Enter Name" data-toggle="popover" data-content="Enter your name here" data-trigger="focus" />
               </div>
 
               <!-- select -->
               <div class="form-group">
                 <label class="required">Type</label>
-                <select class="form-control shadow" style="width:25% !important" placeholder="Select Type" data-toggle="popover" title="Type" data-content="Select from HR, Finance, Presales" data-trigger="focus">
+                <select class="form-control shadow" style="width:25% !important" placeholder="Select Type" data-toggle="popover" data-content="Select from HR, Finance, Presales" data-trigger="focus">
                   <option>HR</option>
                   <option>Finance</option>
                   <option>Presales</option>
-<!--
+                  <!--
                   <option>Option 4</option>
                   <option>Option 5</option>
 -->
@@ -208,7 +206,7 @@
               <!-- textarea -->
               <div class="form-group">
                 <label class="required">Description</label>
-                <textarea class="form-control shadow" rows="3" placeholder="Enter Description"  data-toggle="popover" title="Description" data-content="Enter description here" data-trigger="focus"></textarea>
+                <textarea class="form-control shadow" rows="3" placeholder="Enter Description" data-toggle="popover" data-content="Enter description here" data-trigger="focus"></textarea>
               </div>
 
 
@@ -249,7 +247,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body" id="data-inter" style="height:435px; overflow-y:auto">
-<!--
+              <!--
               <div style="margin-left:40%; margin-top:20%">
                 <h3> Add Properties Here  </h3>
             </div>
@@ -259,94 +257,107 @@
           </div>
           <!-- /.box -->
         </div>
-          <div class="col-md-3 col-sm-3 pull-right mtop">
-            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
-              <h4 class="col-md-12 col-sm-12">Data Properties</h4>
-              <section>
+        <div class="col-md-3 col-sm-3 pull-right mtop">
+          <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+            <h4 class="col-md-12 col-sm-12">Data Properties</h4>
+            <section>
 
-                <!-- property and edit tabs -->
-                <div class=" ">
-                  <div class="row" style="margin-left: 45px;">
-                    <button class="btn btn-sm btn-primary" id="data-btn-property" style="margin-top:10px;margin-left:0px;height: 25px;">Properties</button>
-                    <button class="btn btn-sm btn-default" id="data-btn-edit" style="margin-top:10px;margin-left:0px;height: 25px; width: 35%;">Edit</button>
+              <!-- property and edit tabs -->
+              <div class=" ">
+                <div class="row" style="margin-left: 45px;">
+                  <button class="btn btn-sm btn-primary" id="data-btn-property" style="margin-top:10px;margin-left:0px;height: 25px;">Properties</button>
+                  <button class="btn btn-sm btn-default" id="data-btn-edit" style="margin-top:10px;margin-left:0px;height: 25px; width: 35%;">Edit</button>
+                </div>
+              </div>
+
+              <!--                data properties div-->
+
+              <div class="properties-data">
+                <div class="row">
+                  <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
+                    <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</div>
+
+
+
+                    <div class="btn btn-primary btn-flat btn-flat-new" id="data-para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</div>
                   </div>
                 </div>
 
-<!--                data properties div-->
-
-                <div class="properties-data">
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</button>
 
 
+                <div class="row">
+                  <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                    <div class="btn btn-primary btn-flat btn-flat-new " id="data-noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</div>
 
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</button>
-                    </div>
+
+
+                    <div class="btn btn-primary btn-flat btn-flat-new" id="data-webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Website</div>
                   </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                    <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</div>
 
 
 
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " id="data-noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Website</button>
-                    </div>
+                    <div class="btn btn-primary btn-flat btn-flat-new" id="data-dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</button>
+                <div class="row">
+                  <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                    <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</div>
 
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</button>
-                    </div>
+                    <div class="btn btn-primary btn-flat btn-flat-new" id="data-priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</button>
+                <div class="row">
+                  <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                    <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</div>
 
 
 
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</button>
-                    </div>
+                    <div class="btn btn-primary btn-flat btn-flat-new" id="data-phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="data-addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="data-phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</button>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12">
-                    <button class="btn btn-primary btn-flat btn-flat-new " id="smartobj" style="width:103%;    margin-left: -5px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Smart Object</button>
-
-                  </div>
+                <div class="col-md-12">
+                  <button class="btn btn-primary btn-flat btn-flat-new " id="smartobj" style="width:103%;    margin-left: -5px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Smart Object</button>
 
                 </div>
 
-                <!-- Data-Edit task -->
-                <div class="edit-data hideDiv">
-                  <label style="margin-left: 8px;margin-top:8px;"> Enter Label</label>
-                  <input class="editlabtxt" id="data-et" type="text" />
+              </div>
+
+              <!-- Data-Edit task -->
+              <div class="edit-data hideDiv">
+                <label style="margin-left: 8px;margin-top:8px;"> Enter Label</label>
+                <input class="editlabtxt" id="data-et" type="text" />
+                <div class="row">
+                  <label>
+                    <input type="checkbox" id="data-check" /> Required
+                  </label>
+                  <label>
+                    <input type="checkbox" /> Read Only
+                  </label>
+                </div>
+                <!--
                   <label style="margin-left: 8px;margin-top:8px;"> Required</label>
                   <input type="checkbox" id="data-check" />
                   <label style="margin-left: 8px;margin-top:8px;"> Read Only</label>
                   <input type="checkbox" />
-                </div>
+-->
 
-              </section>
-            </div>
+
+                <div class="row">
+                  <button class="btn btn-sm btn-primary btn-flat btn-flat-new " style="width:80%;  margin-left: 29px;"> Advance</button>
+                </div>
+              </div>
+
+            </section>
           </div>
+        </div>
       </section>
 
       <h2>Roles</h2>
@@ -536,9 +547,21 @@
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse in  ">
                       <div class="box-body" id="inter" style="height:310px; overflow-y:auto">
-                        <div class="row taskframe" id="0"><label class="edit-label"> Name </label><input type="email" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled=""><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>
+                        <div class="row taskframe" id="0">
+                          <label class="edit-label"> Name </label>
+                          <input type="email" class="form-control formctrl" id="exampleInputEmail1" placeholder="Text" disabled="">
+                          <div class="pull-right btn-pannel">
+                            <button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                        </div>
 
-                        <div class="row taskframe" id="1"><label class="edit-label"> Description </label><textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled=""></textarea><div class="pull-right btn-pannel"><button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button></div></div>
+                        <div class="row taskframe" id="1">
+                          <label class="edit-label"> Description </label>
+                          <textarea class="form-control formctrl shadow" rows="3" style="resize:none" placeholder="Paragraph" disabled=""></textarea>
+                          <div class="pull-right btn-pannel">
+                            <button class="btn-transparent" id="delT"><i class="fa fa-trash-o"></i></button>
+                          </div>
+                        </div>
 
 
                       </div>
@@ -547,7 +570,7 @@
 
                   <div class="panel box box-primary">
                     <div class="box-header" style="padding-bottom: 0px;">
-<!--<div class="pull-right box-tools">
+                      <!--<div class="pull-right box-tools">
   <button type="button" class="btn btn-primary btn-sm pull-right rotate" data-target="#collapseFour" data-toggle="collapse" title="Collapse" data-parent="#accordion2" style="margin-right: 5px;" data-widget="collapse"><i class="fa  fa-angle-right "></i></button>
 </div>-->
                       <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour" id="attachment" class="acc">
@@ -581,7 +604,7 @@
                       </a>
                     </div>
                     <div id="collapseFive" class="panel-collapse collapse">
-                      <div class="box-body"style="height:310px; overflow-y:auto">
+                      <div class="box-body" style="height:310px; overflow-y:auto">
 
                       </div>
                     </div>
@@ -609,141 +632,152 @@
                     <button class="btn btn-sm btn-default" id="btn-edit" style="margin-top:10px;margin-left:0px;height: 25px; width: 35%;">Edit</button>
                   </div>
                 </div>
-                <div class="properties-task">
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</button>
-                    </div>
-                  </div>
-
-
-
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " id="noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Web</button>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</button>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</button>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</button>
-
-
-
-                      <button class="btn btn-primary btn-flat btn-flat-new" id="phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</button>
-                    </div>
-                  </div>
-
-                  <div class="col-md-12">
-                    <button class="btn btn-primary btn-flat btn-flat-new " id="casedata" style="width:103%; margin-left: -5px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Case Data</button>
-
-                  </div>
-
-                </div>
                 <!-- Edit task -->
                 <div class="edit-task hideDiv">
                   <label style="margin-left: 8px;margin-top:8px;"> Enter Label</label>
                   <input class="editlabtxt" id="et" type="text" />
+                  <!--
                   <label style="margin-left: 8px;margin-top:8px;"> Required</label>
                   <input type="checkbox" id="task-check" />
                   <label style="margin-left: 8px;margin-top:8px;"> Read Only</label>
                   <input type="checkbox" />
+-->
+                  <div class="row">
+                    <label>
+                      <input type="checkbox" id="task-check" /> Required
+                    </label>
+                    <label>
+                      <input type="checkbox" /> Read Only
+                    </label>
+                  </div>
                 </div>
+                <div class="properties-task">
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:10px; margin-left:10px; display:inline-block">
+                      <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="txt"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Text</div>
 
-              </section>
-            </div>
-          </div>
-        </div>
 
-        <!-- Attachment div -->
-        <div class="about-attachment hideDiv">
-          <div class="col-md-3 col-sm-3 pull-right">
-            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
-              <h4 class="col-md-12 col-sm-12">Attachment Properties</h4>
-              <section>
-                <form role="form">
-                  <!-- text input -->
-                  <div class="form-group ">
 
-                    <div class="col-md-12" style="margin-top:10px">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-file" style="margin-right:8px; margin-left: -8px;"> </i>Document</button>
-
+                      <div class="btn btn-primary btn-flat btn-flat-new" id="para" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Paragraph</div>
                     </div>
-                    <div class="col-md-12">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-envelope" style="margin-right:8px; margin-left: -33px;"> </i>Email</button>
-                    </div>
-
-                    <div class="col-md-12">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -37px;"> </i>Link</button>
-
-                    </div>
-                    <div class="col-md-12">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-bookmark" style="margin-right:8px; margin-left: 1px;"> </i>Bookmark</button>
-                    </div>
-
-
                   </div>
-                </form>
-              </section>
-            </div>
-          </div>
-        </div>
 
-        <!-- Overview div -->
-        <div class="about-overview hideDiv">
-          <div class="col-md-3 col-sm-3 pull-right">
-            <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
-              <h4 class="col-md-12 col-sm-12">Outcome Properties</h4>
-              <section>
-                <form role="form">
-                  <!-- text input -->
-                  <div class="form-group ">
 
-                    <div class="col-md-12" style="margin-top:10px">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -8px;"> </i>Link</button>
 
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <div class="btn btn-primary btn-flat btn-flat-new " id="noinput" style="width:45%"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Number</div>
+
+
+
+                      <div class="btn btn-primary btn-flat btn-flat-new" id="webinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Web</div>
                     </div>
-                    <div class="col-md-12">
-                      <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-check-square-o" style="margin-right:8px; margin-left: 4px;"> </i>Check List</button>
-                    </div>
-
                   </div>
-                </form>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="timeinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Time</div>
+
+
+
+                      <div class="btn btn-primary btn-flat btn-flat-new" id="dateinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Date</div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="emailinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Email</div>
+
+
+
+                      <div class="btn btn-primary btn-flat btn-flat-new" id="priceinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Price</div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12" style="margin-top:0px; margin-left:10px; display:inline-block">
+                      <div class="btn btn-primary btn-flat btn-flat-new " style="width:45%" id="addinput"><i class="" style="margin-right:2px; padding:0px;     margin-left: -9px;"> </i>Address</div>
+
+
+
+                      <div class="btn btn-primary btn-flat btn-flat-new" id="phoneinput" style="width:45%"><i class="" style="margin-right:7px; margin-left: -13px;"> </i>Phone No</button>
+
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="btn btn-primary btn-flat btn-flat-new " id="casedata" style="width:91%; margin-left: 10px;" data-target="#"><i class="fa fa-suitcase" style="margin-right:8px; margin-left: -6px;"> </i>Case Data</div>
+
+                    </div>
+                  </div>
+
+
               </section>
+              </div>
             </div>
           </div>
-        </div>
+
+          <!-- Attachment div -->
+          <div class="about-attachment hideDiv">
+            <div class="col-md-3 col-sm-3 pull-right">
+              <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+                <h4 class="col-md-12 col-sm-12">Attachment Properties</h4>
+                <section>
+                  <form role="form">
+                    <!-- text input -->
+                    <div class="form-group ">
+
+                      <div class="col-md-12" style="margin-top:10px">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-file" style="margin-right:8px; margin-left: -8px;"> </i>Document</button>
+
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-envelope" style="margin-right:8px; margin-left: -33px;"> </i>Email</button>
+                      </div>
+
+                      <div class="col-md-12">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -37px;"> </i>Link</button>
+
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-bookmark" style="margin-right:8px; margin-left: 1px;"> </i>Bookmark</button>
+                      </div>
 
 
-        <!-- / Components -->
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overview div -->
+          <div class="about-overview hideDiv">
+            <div class="col-md-3 col-sm-3 pull-right">
+              <div class="mCustomScrollbar" id='right' style="margin-top: -2px;">
+                <h4 class="col-md-12 col-sm-12">Outcome Properties</h4>
+                <section>
+                  <form role="form">
+                    <!-- text input -->
+                    <div class="form-group ">
+
+                      <div class="col-md-12" style="margin-top:10px">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-link" style="margin-right:8px; margin-left: -8px;"> </i>Link</button>
+
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-primary btn-flat btn-flat-new " style="width:98%" data-target="#"><i class="fa fa-check-square-o" style="margin-right:8px; margin-left: 4px;"> </i>Check List</button>
+                      </div>
+
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- / Components -->
       </section>
 
       <h2>Cards</h2>
@@ -962,12 +996,13 @@
                   </div>
                   <div class="preview-email hideDiv" id="preview">
                     <div class="col-md-7 shadow">
+
                       <div class="col-md-5">
 
                         <!-- Card Design -->
                         <!--email card start here -->
-                        <div class="card-box bg-lightgray" style="top: 45px;">
-                          <span data-brackets-id="14140" class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                        <div class="card-box bg-lightgray" style="top: 25px; left:75%">
+                          <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
                           <div class="card-box-new bg-theme">
                             <div class="inner">
                               <h3 style="margin-left : 15px ; margin-top: 5px ">
@@ -975,15 +1010,15 @@
                               </h3>
 
                             </div>
-                            <div data-brackets-id="11504" class="icon">
-                              <i data-brackets-id="11505" class="ion ion-email"></i>
+                            <div class="icon">
+                              <i class="ion ion-email"></i>
                             </div>
                           </div>
                           <div class="inner">
                             <p>
-                              <ul data-brackets-id="15897" style="list-style-type:circle !important;     margin-left: 30px;">
-                                <li data-brackets-id="15898">1 RFP added</li>
-                                <li data-brackets-id="15899">1 Opportunity added</li>
+                              <ul style="list-style-type:circle !important;     margin-left: 30px;">
+                                <li>1 RFP added</li>
+                                <li>1 Opportunity added</li>
                               </ul>
                             </p>
                           </div>
@@ -991,10 +1026,10 @@
                         <!--email card ends here -->
                       </div>
 
-                      <div class="col-md-5" style="margin-left:70px">
+                      <div class="col-md-10" style="margin-left:35px; margin-top:20px">
+                        <button class="cross" style="float: right; background:transparent; border:none; margin-top: -135px; margin-right:-70px"><i class="fa fa-times"></i></button>
                         <!--                      <label> Company A</label>-->
-                        <button class="cross" style=" margin-left:200px; background:transparent; border:none"><i class="fa fa-times"></i></button>
-                        <div class="table-responsive no-padding">
+                        <div class="table-responsive no-padding" style="margin-bottom:10px">
                           <table class="table table-hover">
                             <th style="border-top:none"> Company A</th>
                             <tr>
@@ -1068,11 +1103,11 @@
                       </div>
                       <div class="col-md-7">
                         <select class="form-control shadow" style="width:65%; height:30px !important">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 4</option>
-                        <option>Option 5</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                          <option>Option 4</option>
+                          <option>Option 5</option>
                         </select>
                       </div>
                     </div>
@@ -1135,7 +1170,7 @@
                     <div class="col-md-6 shadow">
                       <div class="col-md-5">
                         <!--email card start here -->
-                        <div class="card-box bg-lightgray" style="top: 45px;">
+                        <div class="card-box bg-lightgray" style="top: 25px;left: 75%;">
                           <span data-brackets-id="14140" class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
                           <div class="card-box-new bg-theme">
                             <div class="inner">
@@ -1150,9 +1185,9 @@
                           </div>
                           <div class="inner">
                             <p>
-                              <ul data-brackets-id="15897" style="list-style-type:circle !important;     margin-left: 30px;">
-                                <li data-brackets-id="15898">1 RFP added</li>
-                                <li data-brackets-id="15899">1 Opportunity added</li>
+                              <ul style="list-style-type:circle !important; margin-left: 30px;">
+                                <li>1 RFP added</li>
+                                <li>1 Opportunity added</li>
                               </ul>
                             </p>
                           </div>
@@ -1160,10 +1195,10 @@
                         <!--email card ends here -->
                       </div>
 
-                      <div class="col-md-5" style="margin-left:70px">
+                      <div class="col-md-10" style="margin-left:30px; margin-top:15px">
                         <!--                      <label> Company A</label>-->
-                        <button class="cross" style=" margin-left:155px; background:transparent; border:none"><i class="fa fa-times"></i></button>
-                        <div class="table-responsive no-padding">
+                        <button class="cross" style=" float:right; background:transparent; border:none; margin-top:-120px; margin-right: -60px;"><i class="fa fa-times"></i></button>
+                        <div class="table-responsive no-padding" style="margin-bottom:10px">
                           <table class="table table-hover">
                             <th style="border-top:none"> Company A</th>
                             <tr>
@@ -1308,7 +1343,7 @@
                   <option class="hideDiv">=</option>
                   <option>+</option>
                   <option>&amp;</option>
-<!--
+                  <!--
                   <option></option>
                   <option>Option 4</option>
                   <option>Option 5</option>
@@ -1537,252 +1572,252 @@
 
       </section>
 
-    </div>
+      </div>
 
 
 
-    <!-- Modal Structure -->
-    <div id="modal3" class="modal bottom-sheet">
-      <div class="modal-content">
-        <div class="modal-bottom-header" style="margin-bottom:-20px; border-bottom:0px; margin-top: -33px;">
+      <!-- Modal Structure -->
+      <div id="modal3" class="modal bottom-sheet">
+        <div class="modal-content">
+          <div class="modal-bottom-header" style="margin-bottom:-20px; border-bottom:0px; margin-top: -33px;">
 
-          <button type="button" id="cardholder" class="modal-action modal-close" style="margin-left:624px; height: 25px;color:#2184BE;width: 35px;border-radius: 10px; " data-dismiss="modal"><span class="glyphicon glyphicon-chevron-down"></span></button>
-          <!--          <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size:18px" >Cards Menu</h4> </b>-->
-        </div>
-        <!-- dialog body -->
-        <div class="modal-body" style="padding:2px">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+            <button type="button" id="cardholder" class="modal-action modal-close" style="margin-left:624px; height: 25px;color:#2184BE;width: 35px;border-radius: 10px; " data-dismiss="modal"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            <!--          <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size:18px" >Cards Menu</h4> </b>-->
+          </div>
+          <!-- dialog body -->
+          <div class="modal-body" style="padding:2px">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
 
-            <div class="carousel-inner" style="height:93px">
-              <div class="item active">
-                <div class="row" style="margin-left:50px">
-                  <div class="col-md-3 ">
-                    <!--email card start here -->
-                    <a href="#c1" data-toggle="modal" data-target="#c1" >
-                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px; position:absolute !important;color:black">
-                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
-                      <div class="card-box-new bg-theme">
-                        <div class="inner">
-                          <h3 style="margin-left : 15px ; margin-top: 5px ">
+              <div class="carousel-inner" style="height:93px">
+                <div class="item active">
+                  <div class="row" style="margin-left:50px">
+                    <div class="col-md-3 ">
+                      <!--email card start here -->
+                      <a href="#c1" data-toggle="modal" data-target="#c1">
+                        <div class="card-box bg-lightgray" style="top: 4px;height: 89px; position:absolute !important;color:black">
+                          <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left : 15px ; margin-top: 5px ">
                             Email
                           </h3>
 
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-email"></i>
+                            </div>
+                          </div>
+                          <div class="inner" style="margin-left: 100px;">
+                            <p>
+                              You have 3 new emails
+                            </p>
+                          </div>
                         </div>
-                        <div  class="icon">
-                          <i class="ion ion-email"></i>
-                        </div>
-                      </div>
-                      <div class="inner" style="margin-left: 100px;">
-                        <p>
-                          You have 3 new emails
-                        </p>
-                    </div>
-                  </div>
-                    </a>
-                  <!--email card ends here -->
+                      </a>
+                      <!--email card ends here -->
 
-<!--
+                      <!--
                     <a href="#c1" data-toggle="modal" data-target="#c1" class=" pic">
                       <img src="img/1.JPG" class="shadow ">
                       <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
                     </a>
 -->
-                  </div>
+                    </div>
 
-                  <div class="col-md-3">
-                    <!--sales force card start here -->
-                    <a href="#c2" data-toggle="modal" data-target="#c2" >
-                      <div class="card-box bg-lightgray" style="top: 4px; height: 89px; position:absolute !important;color:black">
-                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
-                      <div class="card-box-new bg-theme">
-                        <div class="inner">
-                          <h3 style="margin-left : 1px ; margin-top: 5px ">
+                    <div class="col-md-3">
+                      <!--sales force card start here -->
+                      <a href="#c2" data-toggle="modal" data-target="#c2">
+                        <div class="card-box bg-lightgray" style="top: 4px; height: 89px; position:absolute !important;color:black">
+                          <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">2</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left : 1px ; margin-top: 5px ">
                             Sales Force
                           </h3>
 
+                            </div>
+                            <div class="icon">
+                              <i class="ion ion-ios7-people"></i>
+                            </div>
+                          </div>
+                          <div class="inner" style="margin-left: 100px;">
+                            <p>
+                              Dummy Text
+                            </p>
+                          </div>
                         </div>
-                        <div  class="icon">
-                          <i class="ion ion-ios7-people"></i>
-                        </div>
-                      </div>
-                      <div class="inner" style="margin-left: 100px;">
-                        <p>
-                          Dummy Text
-                        </p>
-                      </div>
-                    </div>
-                    </a>
-                    <!--sales force card ends here -->
-<!--
+                      </a>
+                      <!--sales force card ends here -->
+                      <!--
                     <a href="#c2" data-toggle="modal" data-target="#c2" class="pic">
                       <img src="img/2.JPG" class="shadow">
                       <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
                     </a>
 -->
-                  </div>
-                  <div class="col-md-3">
-                    <a href="#c3" data-toggle="modal" data-target="#c3">
-                    <!--calendar card start here -->
-                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important;color:black">
-                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
-                      <div class="card-box-new bg-theme">
-                        <div class="inner">
-                          <h3 style="margin-left : 8px ; margin-top: 5px ">
+                    </div>
+                    <div class="col-md-3">
+                      <a href="#c3" data-toggle="modal" data-target="#c3">
+                        <!--calendar card start here -->
+                        <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important;color:black">
+                          <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left : 8px ; margin-top: 5px ">
                             Calendar
                           </h3>
 
+                            </div>
+                            <div class="icon" style=" margin-left: 4px; margin-top:-4px">
+                              <i class="ion ion-ios7-calendar" style="font-size:60px"></i>
+                            </div>
+                          </div>
+                          <div class="inner" style="margin-left: 100px;">
+                            <p>
+                              You have 3 new invites
+                            </p>
+                          </div>
                         </div>
-                        <div  class="icon" style=" margin-left: 4px; margin-top:-4px">
-                          <i class="ion ion-ios7-calendar" style="font-size:60px"></i>
-                        </div>
-                      </div>
-                      <div class="inner" style="margin-left: 100px;">
-                        <p>
-                         You have 3 new invites
-                        </p>
-                      </div>
-                    </div>
-                    </a>
-                    <!--calendar card ends here -->
-<!--
+                      </a>
+                      <!--calendar card ends here -->
+                      <!--
                     <a href="#c3" data-toggle="modal" data-target="#c3" class="pic">
                       <img src="img/3.JPG" class="shadow">
                       <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">3</span>
                     </a>
 -->
-                  </div>
-                  <div class="col-md-3">
-                    <!--feeds card start here -->
-                    <a href="#c4" data-toggle="modal" data-target="#c4">
-                      <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important; color:black">
-                      <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
-                      <div class="card-box-new bg-theme">
-                        <div class="inner">
-                          <h3 style="margin-left : 15px ; margin-top: 5px ">
+                    </div>
+                    <div class="col-md-3">
+                      <!--feeds card start here -->
+                      <a href="#c4" data-toggle="modal" data-target="#c4">
+                        <div class="card-box bg-lightgray" style="top: 4px;height: 89px;position:absolute !important; color:black">
+                          <span class="label label-warning" style="margin-top:-5px;right:-8px;border-radius:10px;padding-top:4px; position:absolute">3</span>
+                          <div class="card-box-new bg-theme">
+                            <div class="inner">
+                              <h3 style="margin-left : 15px ; margin-top: 5px ">
                             Feeds
                           </h3>
 
+                            </div>
+                            <div class="icon" style="margin-left: 6px;margin-top:-6px">
+                              <i class="ion ion-social-rss" style="font-size:50px;"></i>
+                            </div>
+                          </div>
+                          <div class="inner" style="margin-left: 100px;">
+                            <p>
+                              Dummy Text
+                            </p>
+                          </div>
                         </div>
-                        <div  class="icon" style="margin-left: 6px;margin-top:-6px">
-                          <i class="ion ion-social-rss" style="font-size:50px;" ></i>
-                        </div>
-                      </div>
-                      <div class="inner" style="margin-left: 100px;">
-                        <p>
-                          Dummy Text
-                        </p>
-                      </div>
-                    </div>
-                    </a>
-                    <!--Feeds card ends here -->
-<!--
+                      </a>
+                      <!--Feeds card ends here -->
+                      <!--
                     <a href="#c4" data-toggle="modal" data-target="#c4" class="pic">
                       <img src="img/4.JPG" class="shadow">
                       <span class="label label-warning" style="top:0;right:70px;border-radius:10px;padding-top:4px;position: absolute;">1</span>
                     </a>
 -->
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="row" style="margin-left:50px">
-                  <div class="col-md-3">
-                    <img src="img/card.jpg" class="pic">
+                <div class="item">
+                  <div class="row" style="margin-left:50px">
+                    <div class="col-md-3">
+                      <img src="img/card.jpg" class="pic">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
                   </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
-                </div>
 
-              </div>
-              <div class="item">
-                <div class="row" style="margin-left:50px">
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="shadow">
-                  </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
-                  <div class="col-md-3">
-                    <img src="img/card.JPG" class="pic">
-                  </div>
                 </div>
+                <div class="item">
+                  <div class="row" style="margin-left:50px">
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="shadow">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
+                    <div class="col-md-3">
+                      <img src="img/card.JPG" class="pic">
+                    </div>
+                  </div>
 
+                </div>
               </div>
+              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="left: -50px; width:5%">
+                <span class="glyphicon glyphicon-chevron-left" style="color:#367FA9; top: 42%"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="right: -50px; width:5%">
+                <span class="glyphicon glyphicon-chevron-right" style="color:#367FA9; top: 42%"></span>
+              </a>
             </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" style="left: -50px; width:5%">
-              <span class="glyphicon glyphicon-chevron-left" style="color:#367FA9; top: 42%"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" style="right: -50px; width:5%">
-              <span class="glyphicon glyphicon-chevron-right" style="color:#367FA9; top: 42%"></span>
-            </a>
-          </div>
-          <!-- /.row -->
+            <!-- /.row -->
 
+          </div>
         </div>
       </div>
-    </div>
 
 
 
-    <!-- Modal Structure -->
-    <div id="modal3" class="modal">
-      <div class="modal-content">
-        <div class="modal-bottom-header">
+      <!-- Modal Structure -->
+      <div id="modal3" class="modal">
+        <div class="modal-content">
+          <div class="modal-bottom-header">
 
-          <button type="button" class="modal-action modal-close" data-dismiss="modal"><span class="fa fa-times "></span></button>
-          <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size: 18px !important" >Cards Menu</h4> </b>
-        </div>
-        <!-- dialog body -->
-        <div class="modal-body" style="padding:2px">
-          <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <a href="#m2" class="small-card-footer" data-toggle="modal" data-target="#m2">
-                <div class="small-card bg-aqua">
-                  <div class="inner">
-                    <h4>
+            <button type="button" class="modal-action modal-close" data-dismiss="modal"><span class="fa fa-times "></span></button>
+            <b> <h4 class="modal-title" style="margin-top:-2.5%; margin-bottom:-1%; font-size: 18px !important" >Cards Menu</h4> </b>
+          </div>
+          <!-- dialog body -->
+          <div class="modal-body" style="padding:2px">
+            <div class="row">
+              <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <a href="#m2" class="small-card-footer" data-toggle="modal" data-target="#m2">
+                  <div class="small-card bg-aqua">
+                    <div class="inner">
+                      <h4>
                     Context Exchange
                   </h4>
-                    <p>
-                      Some Info
-                    </p>
-                  </div>
-                  <!--                    <div class="icon">
+                      <p>
+                        Some Info
+                      </p>
+                    </div>
+                    <!--                    <div class="icon">
 <i class="ion ion-ios7-people"></i>
 </div>-->
-                  <a href="#" class="small-card-footer">
+                    <a href="#" class="small-card-footer">
                   Select <i class="fa fa-arrow-circle-right"></i>
                 </a>
-                </div>
+                  </div>
+              </div>
+              <!-- ./col -->
+
+              <!-- ./col -->
+
+              <!-- ./col -->
+
+              <!-- ./col -->
             </div>
-            <!-- ./col -->
+            <!-- /.row -->
 
-            <!-- ./col -->
-
-            <!-- ./col -->
-
-            <!-- ./col -->
           </div>
-          <!-- /.row -->
-
         </div>
       </div>
-    </div>
 
-    <div class="screen-center">
-      <!--                <button class="btn btn-primary" id="showBottom" onclick="showme();">Cards</button>-->
-      <a class="btn btn-primary modal-trigger btn-primary-header " href="#modal3" style="padding-bottom:1.5%; position:fixed ; padding-top: 1.5%; margin-top:-10px; bottom:0">Cards <i class="fa fa-chevron-up screen-top" style="display: block;margin-right: -23px;"> <span class="label label-warning" style="top:-12px;right:-8px;border-radius:10px;padding-top:4px">1</span></i> </a>
-    </div>
+      <div class="screen-center">
+        <!--                <button class="btn btn-primary" id="showBottom" onclick="showme();">Cards</button>-->
+        <a class="btn btn-primary modal-trigger btn-primary-header " href="#modal3" style="padding-bottom:1.5%; position:fixed ; padding-top: 1.5%; margin-top:-10px; bottom:0">Cards <i class="fa fa-chevron-up screen-top" style="display: block;margin-right: -23px;"> <span class="label label-warning" style="top:-12px;right:-8px;border-radius:10px;padding-top:4px">1</span></i> </a>
+      </div>
 
 
 
@@ -1964,21 +1999,19 @@
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <a href="#">
-                <div class="small-box bg-theme">
+                <div class="small-box bg-darkgray">
                   <div class="inner">
                     <h4>
-                        Initiation
+                        New
                       </h4>
                     <p>
 
                     </p>
                   </div>
                   <div class="icon">
-                    <i class="ion ion-ios7-people"></i>
+                    <i class="ion ion-plus-circled"></i>
                   </div>
-                  <!--                <a href="#m2" class="small-box-footer">-->
                   <br>
-
                 </div>
               </a>
             </div>
@@ -2126,26 +2159,24 @@ Select <i class="fa fa-arrow-circle-right"></i>
 
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
+
               <a href="#">
-                <div class="small-box bg-darkgray">
+                <div class="small-box bg-theme">
                   <div class="inner">
                     <h4>
-                        New
+                        Initiation
                       </h4>
                     <p>
 
                     </p>
                   </div>
                   <div class="icon">
-                    <i class="ion ion-plus-circled"></i>
+                    <i class="ion ion-ios7-people"></i>
                   </div>
-                  <!--
-<a href="wizard.html" class="small-box-footer">
-Select <i class="fa fa-arrow-circle-right"></i>
--->
                   <br>
                 </div>
               </a>
+
             </div>
             <!-- ./col -->
           </div>
