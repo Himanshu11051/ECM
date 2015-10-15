@@ -765,14 +765,21 @@
     });
 
     //Add required to fields.
-    $(document.body).on('click', '#task-check', function (e) {
+    $(document.body).on('click', '.taskframe', function (e) {
+      $('#task-check').click(function () {
+        if ($(this).is(":checked")) {
+          $(this).val('1');
+          $('#' + idi).find('label').addClass('required');
 
-      if ($(this).is(":checked")) {
-        $('.edit-label').addClass('required');
+        } else {
+          $('#' + idi).find('label').removeClass('required');
+        }
 
-      } else {
-        $('.edit-label').removeClass('required');
-      }
+      });
+      $('#task-check').change(function () {
+
+        $(this).val('0');
+      });
     });
 
     /*Task Builder Ends Here */
